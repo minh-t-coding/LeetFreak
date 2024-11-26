@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -16,6 +18,7 @@ public class UserService {
     }
 
       // Create a new user
+      @Transactional
       public User createUser(String username, String email, String passwordHash, int eloRating) {
         User user = new User();
         user.setUsername(username);
@@ -41,6 +44,7 @@ public class UserService {
     }
 
     // Update user information
+    @Transactional
     public User updateUser(Long id, String username, String email, String passwordHash, int eloRating) {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
@@ -55,6 +59,7 @@ public class UserService {
     }
 
     // Delete a user by ID
+    @Transactional
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
