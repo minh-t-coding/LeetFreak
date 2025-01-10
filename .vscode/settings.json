@@ -10,5 +10,6 @@
             "database": "leetfreak-dev",
             "username": "postgres"
         }
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
